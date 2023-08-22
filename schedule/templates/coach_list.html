@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Coaches list{% endblock title %}
+
+{% block content %}
+	<h1 class='m-2'>Список тренеров</h1>
+
+	{% for coach in object_list %}
+
+			<div class="card mb-3 mx-2" style="max-width: 540px;">
+			  <div class="row no-gutters">
+			    <div class="col-md-4">
+				    <a href="{% url 'coach_detail' coach.slug_field %}">
+					    <img src="{{ coach.images.first }}" alt="{{ coach.get_fullname }}">
+			      </a>
+		      </div>
+			    <div class="col-md-8">
+			      <div class="card-body">
+				      <a href="{% url 'coach_detail' coach.slug_field %}">
+			          <h5 class="card-title">{{ coach.get_fullname }}</h5>
+				      </a>
+			        <p class="card-text">{{ coach.short_description }}</p>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+	{% endfor %}
+
+{% endblock content %}

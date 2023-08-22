@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Coach{% endblock title %}
+
+{% block content %}
+
+	<div class="media">
+	  <div class="media-body">
+	    <h5 class="mt-0 mb-1">{{ coach.get_fullname }}</h5>
+	    <p>{{ coach.short_description }}</p>
+	  </div>
+    <img src="..." class="ml-3" alt="...">
+	</div>
+
+{% endblock content %}
