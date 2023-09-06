@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 
-{% block title %}Coach{% endblock title %}
+{% block title %}{{ coach.get_fullname }}{% endblock title %}
 
 {% block content %}
 
-	<div class="media">
+	<div class="media container-fluid">
+		<img src="{{ coach.profile_image.url }}" class="mr-3 align-self-start" style="width:15%" alt="...">
 	  <div class="media-body">
-	    <h5 class="mt-0 mb-1">{{ coach.get_fullname }}</h5>
-	    <p>{{ coach.short_description }}</p>
+	    <h3 class="mr-3">{{ coach.get_fullname }}</h3>
+	    <p>{{ coach.description }}</p>
 	  </div>
-    <img src="..." class="ml-3" alt="...">
 	</div>
 
 {% endblock content %}

@@ -18,7 +18,8 @@ class ModelsTestCase(TestCase):
             age=40,
             sport_coaching=self.sport_type1,
             short_description='Крутой тренер!',
-            slug_field='petrashov'
+            slug_field='petrashov',
+            profile_image='coaches/petrashov/DSC00176.JPG'
         )
 
         self.training1 = TrainingInfo.objects.create(
@@ -35,6 +36,7 @@ class ModelsTestCase(TestCase):
 
     def test_create_sport_type(self):
         self.assertEqual(self.sport_type1.name, 'Плавание')
+        self.assertEqual(self.sport_type1.slug_name, 'plavanie')
 
     def test_create_coach(self):
         self.assertEqual(self.coach1.first_name, 'Евгений')
@@ -51,5 +53,7 @@ class ModelsTestCase(TestCase):
         self.assertEqual(self.training1.duration.minute, 30)
         self.assertEqual(self.training1.end_time.strftime('%H:%M'), '11:30')
         self.assertEqual(self.training1.weekdays[0], 'monday')
+        self.assertEqual(self.training1.weekdays[1], 'wednesday')
+        self.assertEqual(self.training1.weekdays[2], 'friday')
         self.assertIs(self.training1.coach, self.coach1)
         self.assertIs(self.training1.sport_type, self.sport_type1)

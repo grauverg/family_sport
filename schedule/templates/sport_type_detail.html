@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}{{ sport_type.name }}{% endblock title %}
+
+{% block content %}
+	<div class="media container-fluid">
+<!--		<img src="{{ sport }}" class="mr-3 align-self-start" style="width:15%" alt="...">-->
+	  <div class="media-body">
+	    <h3 class="mr-3">{{ sport_type.name }}</h3>
+	    <p>{{ sport_type.description }}</p>
+	  </div>
+	</div>
+
+{% endblock content %}

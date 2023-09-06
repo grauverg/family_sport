@@ -1,34 +1,33 @@
 {% extends "base.html" %}
 
-{% block title %}Coaches list{% endblock title %}
+{% block title %}Виды спорта{% endblock title %}
 
 {% block content %}
-	<h1 class='m-2'>Список тренеров</h1>
+  <h1 class='m-2'>Список тренеров</h1>
 
-	{% for coach in object_list %}
+	{% for sport in sport_types %}
 
 			<div class="card mb-3 mx-2" style="max-width: 540px;">
 			  <div class="row no-gutters">
 			    <div class="col-md-4">
-				    <a href="{% url 'coach_detail' coach.slug_field %}">
-				      <img class="img-fluid" src="{{ coach.profile_image.url }}" alt="{{ coach.get_fullname }}">
+				    <a href="{% url 'sport_detail' sport.slug_name %}">
+				      <img class="img-fluid" src="{{ sport.main_image }}" alt="{{ sport.name }}">
 			      </a>
 		      </div>
 			    <div class="col-md-8">
 			      <div class="card-body">
+					  {% for coach in sport.coaches %}
 				      <a href="{% url 'coach_detail' coach.slug_field %}">
 			          	<h4 class="card-title">{{ coach.get_fullname }}</h4>
 				      </a>
 
 					  <a href="{% url 'sport_detail' coach.sport_coaching.slug_name %}">
-						  <h6 class="card-subtitle mb-2 text-muted">{{ coach.sport_coaching.name }}</h6>
+						  <h6 class="card-subtitle mb-2 text-muted">{{  }}</h6>
 					  </a>
-
-			        <p class="card-text">{{ coach.short_description }}</p>
+			        <p class="card-text">{{ sport.short_description }}</p>
 			      </div>
 			    </div>
 			  </div>
 			</div>
 	{% endfor %}
-
 {% endblock content %}
